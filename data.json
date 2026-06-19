@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-19T20:52:58.650Z",
+  "updatedAt": "2026-06-19T22:09:22.129Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -400,6 +400,21 @@
       "ownerA": "Adam",
       "ownerB": "",
       "goalsA": 1,
+      "goalsB": 0,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537348",
+      "date": "2026-06-19T19:00:00Z",
+      "teamA": "United States",
+      "teamB": "Australia",
+      "ownerA": "Joe S",
+      "ownerB": "Faizan",
+      "goalsA": 2,
       "goalsB": 0,
       "cardsA": 0,
       "cardsB": 0,
