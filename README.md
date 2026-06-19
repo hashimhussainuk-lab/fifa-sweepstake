@@ -45,3 +45,10 @@ For true live auto-updates from official match data, you need:
 - scheduled polling for fixtures, goals, cards and match events
 
 That can be added later without changing the overall design.
+
+
+## Update: no public match deletion
+
+This version removes the delete button from previous match results and makes the results table clearer by showing team owners, score, goal difference, cards, and quickest goal.
+
+If a result needs correcting, update the source data/API file rather than deleting rows on the public page.

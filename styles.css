@@ -325,3 +325,14 @@ pre {
   .metrics, .match-form, .people-grid { grid-template-columns: 1fr; }
   h1 { font-size: 2.4rem; }
 }
+
+
+.notice-card {
+  background: linear-gradient(135deg, rgba(50,245,183,.1), rgba(255,216,77,.08));
+}
+
+#matchTable td:nth-child(2),
+#matchTable td:nth-child(3) {
+  font-weight: 700;
+}
+

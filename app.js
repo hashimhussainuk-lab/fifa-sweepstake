@@ -183,7 +183,7 @@ function initForms() {
   document.getElementById("exportJson").addEventListener("click", exportData);
   document.getElementById("importJson").addEventListener("change", importData);
   document.getElementById("clearData").addEventListener("click", () => {
-    if (confirm("Clear all match data?")) {
+    if (confirm("This only clears your local browser copy. It does not delete public/API match data. Continue?")) {
       state.matches = [];
       saveState();
       render();
@@ -287,19 +287,17 @@ function renderMatches() {
     <tr>
       <td>${m.date || "—"}</td>
       <td>${m.teamA} vs ${m.teamB}</td>
+      <td>${ownerByTeam[m.teamA] || m.ownerA || "Unknown"} vs ${ownerByTeam[m.teamB] || m.ownerB || "Unknown"}</td>
       <td><strong>${m.goalsA}-${m.goalsB}</strong></td>
       <td>${Math.abs(m.goalsA - m.goalsB)}</td>
-      <td>${m.cardsA + m.cardsB}</td>
+      <td>${Number(m.cardsA || 0) + Number(m.cardsB || 0)}</td>
       <td>${m.quickGoalTeam ? `${m.quickGoalTeam} (${m.quickGoalMinute}')` : "—"}</td>
-      <td><button onclick="deleteMatch('${m.id}')" class="danger">Delete</button></td>
     </tr>
   `).join("");
 }
 
 function deleteMatch(id) {
-  state.matches = state.matches.filter(m => m.id !== id);
-  saveState();
-  render();
+  alert('Match deletion is disabled on the public tracker. Correct the source data/API file instead.');
 }
 
 function renderPeople(stats) {
@@ -309,12 +307,12 @@ function renderPeople(stats) {
       <article class="person-card">
         <div class="person-head">
           <h2>${person}</h2>
-          <p>GF ${p.for} · GA ${p.against} · Cards ${p.cards}</p>
+          <p>For ${p.for} · Against ${p.against} · Cards ${p.cards}</p>
         </div>
         <div class="team-list">
           ${teams.map(team => {
             const s = stats.teamStats[team];
-            return `<div class="team-pill"><span>${team}</span><span>${s.for}-${s.against} · ${s.cards} cards</span></div>`;
+            return `<div class="team-pill"><span>${team}</span><span>For ${s.for} · Against ${s.against} · ${s.cards} cards</span></div>`;
           }).join("")}
         </div>
       </article>
@@ -361,22 +359,6 @@ function importData(event) {
   reader.readAsText(file);
 }
 
-async function loadSharedData() {
-  try {
-    const response = await fetch(`data.json?cacheBust=${Date.now()}`);
-    if (!response.ok) return;
-
-    const sharedData = await response.json();
-
-    if (Array.isArray(sharedData.matches)) {
-      state.matches = sharedData.matches;
-      saveState();
-    }
-  } catch (error) {
-    console.warn("Could not load shared data.json", error);
-  }
-}
-
 function render() {
   const stats = calcStats();
   renderDashboard(stats);
@@ -387,7 +369,4 @@ function render() {
 
 initTabs();
 initForms();
-
-loadSharedData().then(() => {
-  render();
-});
+render();

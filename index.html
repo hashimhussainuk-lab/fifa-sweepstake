@@ -23,7 +23,7 @@
 
     <nav class="tabs" aria-label="Main navigation">
       <button class="tab active" data-tab="dashboard">Dashboard</button>
-      <button class="tab" data-tab="matches">Match Log</button>
+      <button class="tab" data-tab="matches">Match Results</button>
       <button class="tab" data-tab="people">People</button>
       <button class="tab" data-tab="rules">Rules</button>
       <button class="tab" data-tab="data">Data</button>
@@ -68,7 +68,7 @@
           <section class="card">
             <div class="card-head">
               <h2>Participant Leaderboard</h2>
-              <p>Updates from the Match Log.</p>
+              <p><strong>For</strong> = goals scored by your teams. <strong>Against</strong> = goals conceded by your teams.</p>
             </div>
             <div class="table-wrap">
               <table id="participantTable">
@@ -98,10 +98,15 @@
       </section>
 
       <section id="matches" class="panel">
+        <section class="card notice-card">
+          <h2>Previous Match Results</h2>
+          <p>This page shows all match data currently being used for the leaderboard. Match results cannot be deleted from the public tracker.</p>
+          <p>To correct a mistake, update the source data/API file rather than deleting rows from the website.</p>
+        </section>
         <section class="card">
           <div class="card-head">
             <h2>Add Match Result</h2>
-            <p>Enter results here. The dashboard and participant tabs update automatically.</p>
+            <p>Optional manual entry for matches not covered by the API. Once added, the dashboard and participant tabs update automatically.</p>
           </div>
 
           <form id="matchForm" class="match-form">
@@ -147,8 +152,8 @@
 
         <section class="card">
           <div class="card-head">
-            <h2>Match Log</h2>
-            <p>All entered matches.</p>
+            <h2>Previous Match Results</h2>
+            <p>This shows all completed match data currently being used for the leaderboard. Public viewers cannot delete match rows.</p>
           </div>
           <div class="table-wrap">
             <table id="matchTable">
@@ -156,11 +161,11 @@
                 <tr>
                   <th>Date</th>
                   <th>Match</th>
+                  <th>Owners</th>
                   <th>Score</th>
                   <th>Goal Diff</th>
                   <th>Cards</th>
                   <th>Quickest Goal</th>
-                  <th></th>
                 </tr>
               </thead>
               <tbody></tbody>
@@ -210,7 +215,7 @@
         <section class="card">
           <div class="card-head">
             <h2>Data Tools</h2>
-            <p>Use this to back up or share the tracker state.</p>
+            <p>Use this to back up or import the tracker state. Public viewers cannot delete individual match rows.</p>
           </div>
           <div class="button-row">
             <button id="exportJson">Export Data</button>
@@ -218,7 +223,7 @@
               Import Data
               <input type="file" id="importJson" accept="application/json" />
             </label>
-            <button id="clearData" class="danger">Clear Match Data</button>
+            <button id="clearData" class="danger">Clear Local Browser Data</button>
           </div>
           <pre id="dataOutput"></pre>
         </section>
