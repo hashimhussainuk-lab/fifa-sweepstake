@@ -387,4 +387,7 @@ function render() {
 
 initTabs();
 initForms();
-render();
+
+loadSharedData().then(() => {
+  render();
+});
