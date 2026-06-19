@@ -1,47 +1,48 @@
 # HostUplift FIFA Sweepstake Tracker
 
-A custom static website for the HostUplift FIFA sweepstake.
+This version includes:
+- Separate Prizes tab
+- Knockout-style match tracking tab
+- Groups tab
+- People tab
+- Dashboard
+- No public match delete button
+- `data.json` loading for GitHub/API workflow
 
-## What it does
+To deploy, replace your GitHub repo's `index.html`, `styles.css`, `app.js`, and `README.md` with these files and merge to `main`.
 
-- Shows the £240 prize pot and prize breakdown
-- Shows all 8 participants and their teams
-- Lets someone enter match results
-- Automatically updates:
-  - Most Goals Conceded
-  - Most Cards
-  - Quickest Goal
-  - Biggest Goal Difference Match
-  - Participant totals
-  - Prize tracker
-- Saves data in the browser using localStorage
-- Allows JSON export/import for backup
 
-## How to use locally
+## Knockout bracket update
 
-Open `index.html` in your browser.
+The knockout tab now uses the correct 2026 World Cup structure:
+- Round of 32
+- Round of 16
+- Quarter-finals
+- Semi-finals
+- Final
+- optional Third Place match
 
-## How to share with the team
+To place a match in the correct column, set the match `group` or `stage` field to values like `Round of 32`, `Quarter-final`, or `Final`.
 
-Best free hosting options:
 
-1. Netlify Drop
-   - Go to Netlify
-   - Drag the whole folder onto Netlify Drop
-   - Share the published URL in Slack
+## Name mapping update
 
-2. GitHub Pages
-   - Create a GitHub repo
-   - Upload the files
-   - Enable Pages
+This version includes team-name mapping in both `app.js` and `scripts/update-data.js`.
 
-## Important limitation
+Examples:
+- `USA` → `United States`
+- `South Korea` → `Korea Republic`
+- `Czechia` → `Czech Republic`
+- `Ivory Coast` → `Côte d'Ivoire`
+- `DR Congo` → `Congo DR`
+- `Cabo Verde` → `Cape Verde Islands`
+- `Bosnia` → `Bosnia and Herzegovina`
+- `Curacao` → `Curaçao`
 
-This version calculates everything from the Match Log.
-
-For true live auto-updates from official match data, you need:
-- a football data API key
-- a small backend/serverless function
-- scheduled polling for fixtures, goals, cards and match events
-
-That can be added later without changing the overall design.
+It also maps 2026 knockout match numbers:
+- 73–88 → Round of 32
+- 89–96 → Round of 16
+- 97–100 → Quarter-finals
+- 101–102 → Semi-finals
+- 103 → Third Place
+- 104 → Final

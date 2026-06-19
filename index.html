@@ -14,16 +14,14 @@
         <h1>FIFA Sweepstake Tracker</h1>
         <p class="sub">£15 entry each · HostUplift matched pot · £240 total prize pot</p>
       </div>
-      <div class="pot-card">
-        <span>Total Pot</span>
-        <strong>£240</strong>
-        <small>8 players · 48 teams</small>
-      </div>
+      <div class="pot-card"><span>Total Pot</span><strong>£240</strong><small>8 players · 48 teams</small></div>
     </header>
 
-    <nav class="tabs" aria-label="Main navigation">
+    <nav class="tabs">
       <button class="tab active" data-tab="dashboard">Dashboard</button>
-      <button class="tab" data-tab="matches">Match Log</button>
+      <button class="tab" data-tab="prizes">Prizes</button>
+      <button class="tab" data-tab="matches">Knockout Tracker</button>
+      <button class="tab" data-tab="groups">Groups</button>
       <button class="tab" data-tab="people">People</button>
       <button class="tab" data-tab="rules">Rules</button>
       <button class="tab" data-tab="data">Data</button>
@@ -32,173 +30,91 @@
     <main>
       <section id="dashboard" class="panel active-panel">
         <div class="grid metrics">
-          <article class="metric">
-            <span>Champion</span>
-            <strong id="championLeader">TBC</strong>
-            <small>£100</small>
-          </article>
-          <article class="metric">
-            <span>Runner-Up</span>
-            <strong id="runnerLeader">TBC</strong>
-            <small>£40</small>
-          </article>
-          <article class="metric">
-            <span>Most Conceded</span>
-            <strong id="concededLeader">TBC</strong>
-            <small>£25</small>
-          </article>
-          <article class="metric">
-            <span>Most Cards</span>
-            <strong id="cardsLeader">TBC</strong>
-            <small>£25</small>
-          </article>
-          <article class="metric">
-            <span>Quickest Goal</span>
-            <strong id="quickestLeader">TBC</strong>
-            <small>£25</small>
-          </article>
-          <article class="metric">
-            <span>Biggest GD Match</span>
-            <strong id="gdLeader">TBC</strong>
-            <small>£25 split</small>
-          </article>
+          <article class="metric"><span>Champion</span><strong id="championLeader">TBC</strong><small>£100</small></article>
+          <article class="metric"><span>Runner-Up</span><strong id="runnerLeader">TBC</strong><small>£40</small></article>
+          <article class="metric"><span>Most Conceded</span><strong id="concededLeader">TBC</strong><small>£25</small></article>
+          <article class="metric"><span>Most Cards</span><strong id="cardsLeader">TBC</strong><small>£25</small></article>
+          <article class="metric"><span>Quickest Goal</span><strong id="quickestLeader">TBC</strong><small>£25</small></article>
+          <article class="metric"><span>Biggest GD Match</span><strong id="gdLeader">TBC</strong><small>£25 split</small></article>
         </div>
-
         <div class="two-col">
           <section class="card">
-            <div class="card-head">
-              <h2>Participant Leaderboard</h2>
-              <p>Updates from the Match Log.</p>
-            </div>
-            <div class="table-wrap">
-              <table id="participantTable">
-                <thead>
-                  <tr>
-                    <th>Person</th>
-                    <th>Teams</th>
-                    <th>For</th>
-                    <th>Against</th>
-                    <th>Cards</th>
-                    <th>Prize Status</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </div>
+            <div class="card-head"><h2>Participant Leaderboard</h2><p><strong>For</strong> = goals scored by your teams. <strong>Against</strong> = goals conceded by your teams.</p></div>
+            <div class="table-wrap"><table id="participantTable"><thead><tr><th>Person</th><th>Teams</th><th>For</th><th>Against</th><th>Cards</th><th>Prize Status</th></tr></thead><tbody></tbody></table></div>
           </section>
-
           <section class="card">
-            <div class="card-head">
-              <h2>Prize Tracker</h2>
-              <p>Current projected winners.</p>
-            </div>
+            <div class="card-head"><h2>Prize Tracker</h2><p>Current projected winners.</p></div>
             <div id="prizeTracker" class="prize-list"></div>
           </section>
         </div>
       </section>
 
-      <section id="matches" class="panel">
+      <section id="prizes" class="panel">
+        <section class="card notice-card"><h2>Prize Centre</h2><p>Every prize, current leader, value, status and criteria in one place.</p></section>
         <section class="card">
-          <div class="card-head">
-            <h2>Add Match Result</h2>
-            <p>Enter results here. The dashboard and participant tabs update automatically.</p>
+          <div class="card-head"><div><h2>All Prizes</h2><p>Simple breakdown of what everyone is currently playing for.</p></div><div class="match-summary">£240 total</div></div>
+          <div id="prizeCards" class="prize-card-grid"></div>
+        </section>
+        <section class="card">
+          <div class="card-head"><h2>Prize Rules</h2><p>Clear tie-break rules.</p></div>
+          <div class="rules-grid">
+            <div class="rule-tile"><strong>Most Goals Conceded</strong><span>Across all teams owned by each person.</span></div>
+            <div class="rule-tile"><strong>Most Cards</strong><span>Yellow cards and red cards combined.</span></div>
+            <div class="rule-tile"><strong>Quickest Goal</strong><span>Use confirmed goal timing. Manual confirmation is safest if the API does not provide goal events.</span></div>
+            <div class="rule-tile"><strong>Biggest Goal Difference Match</strong><span>One single match. Both owners of the teams involved split £25.</span></div>
           </div>
+        </section>
+      </section>
 
+      <section id="matches" class="panel">
+        <section class="card notice-card">
+          <h2>Knockout Style Match Tracker</h2>
+          <p>Proper knockout bracket view for the 2026 format: Round of 32, Round of 16, Quarter-finals, Semi-finals and Final.</p>
+          <p>Match results cannot be deleted from the public tracker. To correct a mistake, update the source data/API file.</p>
+        </section>
+        <section class="card">
+          <div class="card-head"><div><h2>Knockout Table View</h2><p>Simple, easy-to-read bracket layout with owners shown under each team.</p></div><div class="match-summary" id="knockoutSummary">0 fixtures</div></div>
+          <div id="knockoutGrid" class="knockout-grid"></div>
+        </section>
+        <section class="card">
+          <div class="card-head"><h2>Add Match Result</h2><p>Optional manual entry for matches not covered by the API.</p></div>
           <form id="matchForm" class="match-form">
-            <label>
-              Date
-              <input type="date" id="matchDate" required />
-            </label>
-            <label>
-              Team A
-              <select id="teamA" required></select>
-            </label>
-            <label>
-              Team A Goals
-              <input type="number" id="goalsA" min="0" value="0" required />
-            </label>
-            <label>
-              Team A Cards
-              <input type="number" id="cardsA" min="0" value="0" required />
-            </label>
-            <label>
-              Team B
-              <select id="teamB" required></select>
-            </label>
-            <label>
-              Team B Goals
-              <input type="number" id="goalsB" min="0" value="0" required />
-            </label>
-            <label>
-              Team B Cards
-              <input type="number" id="cardsB" min="0" value="0" required />
-            </label>
-            <label>
-              Quickest Goal Team
-              <select id="quickGoalTeam"></select>
-            </label>
-            <label>
-              Quickest Goal Minute
-              <input type="number" id="quickGoalMinute" min="0" max="130" placeholder="e.g. 3" />
-            </label>
+            <label>Date<input type="date" id="matchDate" required /></label>
+            <label>Group / Stage<input type="text" id="matchGroup" placeholder="e.g. Round of 32 / Quarter-final / Final" /></label>
+            <label>Team A<select id="teamA" required></select></label>
+            <label>Team A Goals<input type="number" id="goalsA" min="0" value="0" required /></label>
+            <label>Team A Cards<input type="number" id="cardsA" min="0" value="0" required /></label>
+            <label>Team B<select id="teamB" required></select></label>
+            <label>Team B Goals<input type="number" id="goalsB" min="0" value="0" required /></label>
+            <label>Team B Cards<input type="number" id="cardsB" min="0" value="0" required /></label>
+            <label>Quickest Goal Team<select id="quickGoalTeam"></select></label>
+            <label>Quickest Goal Minute<input type="number" id="quickGoalMinute" min="0" max="130" placeholder="e.g. 3" /></label>
             <button type="submit">Add Match</button>
           </form>
         </section>
-
         <section class="card">
-          <div class="card-head">
-            <h2>Match Log</h2>
-            <p>All entered matches.</p>
-          </div>
-          <div class="table-wrap">
-            <table id="matchTable">
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Match</th>
-                  <th>Score</th>
-                  <th>Goal Diff</th>
-                  <th>Cards</th>
-                  <th>Quickest Goal</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
+          <div class="card-head"><h2>Compact Match Table</h2><p>Quick checking table.</p></div>
+          <div class="table-wrap"><table id="matchTable"><thead><tr><th>Date</th><th>Group</th><th>Match</th><th>Owners</th><th>Score</th><th>GD</th><th>Cards</th><th>Quickest Goal</th></tr></thead><tbody></tbody></table></div>
         </section>
       </section>
 
-      <section id="people" class="panel">
-        <div id="peopleGrid" class="people-grid"></div>
+      <section id="groups" class="panel">
+        <section class="card notice-card"><h2>Group Tables</h2><p>Groups show teams, owners, played, for, against, cards and who has gone against who.</p></section>
+        <section class="card"><div class="card-head"><div><h2>Groups & Fixtures</h2><p>If the API provides group/stage names, matches will be organised by that field.</p></div><div class="match-summary" id="groupsSummary">Groups loading</div></div><div id="groupsGrid" class="groups-grid"></div></section>
       </section>
+
+      <section id="people" class="panel"><div id="peopleGrid" class="people-grid"></div></section>
 
       <section id="rules" class="panel">
         <section class="card rules-card">
           <h2>Rules & Prize Breakdown</h2>
           <p>There are 8 people involved. Entry is £15 each, making a £120 player pot. HostUplift matches this with another £120, making a £240 total pot.</p>
           <p>This draw was done live with everybody and is now set in <strong>STONE</strong>.</p>
-
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Prize</th>
-                  <th>Amount</th>
-                  <th>Criteria</th>
-                </tr>
-              </thead>
-              <tbody id="rulesPrizeTable"></tbody>
-            </table>
-          </div>
-
+          <div class="table-wrap"><table><thead><tr><th>Prize</th><th>Amount</th><th>Criteria</th></tr></thead><tbody id="rulesPrizeTable"></tbody></table></div>
           <h3>Confirmed Rules</h3>
           <ul>
-            <li>No yellow-card-only prize.</li>
-            <li>Most Cards is based on yellow cards and red cards combined.</li>
-            <li>No separate first red card prize.</li>
-            <li>Most Goals Conceded is across all of a person’s teams for the whole tournament.</li>
-            <li>Biggest Goal Difference Match is one single match, not total tournament goal difference.</li>
+            <li>No yellow-card-only prize.</li><li>Most Cards is yellow cards and red cards combined.</li><li>No separate first red card prize.</li>
+            <li>Most Goals Conceded is across all of a person’s teams.</li><li>Biggest Goal Difference Match is one single match, not total tournament goal difference.</li>
             <li>If there is a tie for Most Goals Conceded, Most Cards, or Quickest Goal, the prize is split equally.</li>
             <li>If multiple matches have the same biggest goal difference, the earliest match played wins.</li>
             <li>If one person owns both teams in the Biggest Goal Difference Match, they receive the full £25.</li>
@@ -207,32 +123,12 @@
       </section>
 
       <section id="data" class="panel">
-        <section class="card">
-          <div class="card-head">
-            <h2>Data Tools</h2>
-            <p>Use this to back up or share the tracker state.</p>
-          </div>
-          <div class="button-row">
-            <button id="exportJson">Export Data</button>
-            <label class="file-button">
-              Import Data
-              <input type="file" id="importJson" accept="application/json" />
-            </label>
-            <button id="clearData" class="danger">Clear Match Data</button>
-          </div>
-          <pre id="dataOutput"></pre>
-        </section>
-
-        <section class="card">
-          <div class="card-head">
-            <h2>Live Data Note</h2>
-          </div>
-          <p>This site calculates everything automatically from the Match Log. To make it pull official match data by itself, you need a football data API key and a small backend/serverless function. The front-end is ready for that next step.</p>
+        <section class="card"><div class="card-head"><h2>Data Tools</h2><p>Back up or import tracker data. Public viewers cannot delete individual match rows.</p></div>
+          <div class="button-row"><button id="exportJson">Export Data</button><label class="file-button">Import Data<input type="file" id="importJson" accept="application/json" /></label><button id="clearData" class="danger">Clear Local Browser Data</button></div><pre id="dataOutput"></pre>
         </section>
       </section>
     </main>
   </div>
-
   <script src="app.js"></script>
 </body>
 </html>
