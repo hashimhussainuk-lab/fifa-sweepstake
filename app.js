@@ -361,6 +361,22 @@ function importData(event) {
   reader.readAsText(file);
 }
 
+async function loadSharedData() {
+  try {
+    const response = await fetch(`data.json?cacheBust=${Date.now()}`);
+    if (!response.ok) return;
+
+    const sharedData = await response.json();
+
+    if (Array.isArray(sharedData.matches)) {
+      state.matches = sharedData.matches;
+      saveState();
+    }
+  } catch (error) {
+    console.warn("Could not load shared data.json", error);
+  }
+}
+
 function render() {
   const stats = calcStats();
   renderDashboard(stats);
