@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-19T23:38:09.040Z",
+  "updatedAt": "2026-06-20T04:11:59.429Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -415,6 +415,36 @@
       "ownerA": "Joe S",
       "ownerB": "Faizan",
       "goalsA": 2,
+      "goalsB": 0,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537342",
+      "date": "2026-06-19T22:00:00Z",
+      "teamA": "Scotland",
+      "teamB": "Morocco",
+      "ownerA": "Laura",
+      "ownerB": "Adam",
+      "goalsA": 0,
+      "goalsB": 1,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537341",
+      "date": "2026-06-20T00:30:00Z",
+      "teamA": "Brazil",
+      "teamB": "Haiti",
+      "ownerA": "Yen",
+      "ownerB": "Faizan",
+      "goalsA": 3,
       "goalsB": 0,
       "cardsA": 0,
       "cardsB": 0,
