@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-20T18:55:45.418Z",
+  "updatedAt": "2026-06-20T20:20:49.497Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -460,6 +460,21 @@
       "ownerA": "Zach",
       "ownerB": "Laura",
       "goalsA": 0,
+      "goalsB": 1,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537359",
+      "date": "2026-06-20T17:00:00Z",
+      "teamA": "Netherlands",
+      "teamB": "Sweden",
+      "ownerA": "Adam",
+      "ownerB": "Joe D",
+      "goalsA": 5,
       "goalsB": 1,
       "cardsA": 0,
       "cardsB": 0,
