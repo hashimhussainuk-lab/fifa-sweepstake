@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-20T04:11:59.429Z",
+  "updatedAt": "2026-06-20T08:03:15.981Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -446,6 +446,21 @@
       "ownerB": "Faizan",
       "goalsA": 3,
       "goalsB": 0,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537347",
+      "date": "2026-06-20T03:00:00Z",
+      "teamA": "Turkey",
+      "teamB": "Paraguay",
+      "ownerA": "Zach",
+      "ownerB": "Laura",
+      "goalsA": 0,
+      "goalsB": 1,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
