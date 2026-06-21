@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-21T19:02:58.794Z",
+  "updatedAt": "2026-06-21T20:53:45.329Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -534,7 +534,7 @@
       "teamB": "Saudi Arabia",
       "ownerA": "Zach",
       "ownerB": "Zach",
-      "goalsA": 5,
+      "goalsA": 4,
       "goalsB": 0,
       "cardsA": 0,
       "cardsB": 0,
