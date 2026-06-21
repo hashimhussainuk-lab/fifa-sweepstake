@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-21T20:53:45.329Z",
+  "updatedAt": "2026-06-21T22:18:38.067Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -535,6 +535,21 @@
       "ownerA": "Zach",
       "ownerB": "Zach",
       "goalsA": 4,
+      "goalsB": 0,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537365",
+      "date": "2026-06-21T19:00:00Z",
+      "teamA": "Belgium",
+      "teamB": "Iran",
+      "ownerA": "Laura",
+      "ownerB": "Joe D",
+      "goalsA": 0,
       "goalsB": 0,
       "cardsA": 0,
       "cardsB": 0,
