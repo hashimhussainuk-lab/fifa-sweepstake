@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-21T01:59:51.439Z",
+  "updatedAt": "2026-06-21T07:01:57.581Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -491,6 +491,36 @@
       "ownerB": "",
       "goalsA": 2,
       "goalsB": 1,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537354",
+      "date": "2026-06-21T00:00:00Z",
+      "teamA": "Ecuador",
+      "teamB": "Curaçao",
+      "ownerA": "Laura",
+      "ownerB": "Joe S",
+      "goalsA": 0,
+      "goalsB": 0,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537360",
+      "date": "2026-06-21T04:00:00Z",
+      "teamA": "Tunisia",
+      "teamB": "Japan",
+      "ownerA": "Faizan",
+      "ownerB": "Zach",
+      "goalsA": 0,
+      "goalsB": 4,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
