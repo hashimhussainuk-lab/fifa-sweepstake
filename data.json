@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-21T23:52:20.303Z",
+  "updatedAt": "2026-06-22T05:02:35.669Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -551,6 +551,36 @@
       "ownerB": "Joe D",
       "goalsA": 0,
       "goalsB": 0,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537372",
+      "date": "2026-06-21T22:00:00Z",
+      "teamA": "Uruguay",
+      "teamB": "Cape Verde Islands",
+      "ownerA": "Hashim",
+      "ownerB": "Joe D",
+      "goalsA": 2,
+      "goalsB": 2,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537366",
+      "date": "2026-06-22T01:00:00Z",
+      "teamA": "New Zealand",
+      "teamB": "Egypt",
+      "ownerA": "Hashim",
+      "ownerB": "Laura",
+      "goalsA": 1,
+      "goalsB": 3,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
