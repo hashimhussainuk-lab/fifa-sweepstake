@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-23T17:27:09.999Z",
+  "updatedAt": "2026-06-23T19:28:55.177Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -641,6 +641,21 @@
       "ownerB": "Yen",
       "goalsA": 1,
       "goalsB": 2,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537405",
+      "date": "2026-06-23T17:00:00Z",
+      "teamA": "Portugal",
+      "teamB": "Uzbekistan",
+      "ownerA": "Laura",
+      "ownerB": "Joe S",
+      "goalsA": 5,
+      "goalsB": 0,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
