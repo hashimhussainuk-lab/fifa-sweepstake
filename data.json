@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-23T21:16:59.158Z",
+  "updatedAt": "2026-06-23T22:48:16.116Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -655,6 +655,21 @@
       "ownerA": "Laura",
       "ownerB": "Joe S",
       "goalsA": 5,
+      "goalsB": 0,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537411",
+      "date": "2026-06-23T20:00:00Z",
+      "teamA": "England",
+      "teamB": "Ghana",
+      "ownerA": "Joe D",
+      "ownerB": "Faizan",
+      "goalsA": 0,
       "goalsB": 0,
       "cardsA": 0,
       "cardsB": 0,
