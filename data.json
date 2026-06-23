@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-22T23:51:37.185Z",
+  "updatedAt": "2026-06-23T04:02:16.852Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -596,6 +596,36 @@
       "ownerB": "Joe D",
       "goalsA": 2,
       "goalsB": 0,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537393",
+      "date": "2026-06-22T21:00:00Z",
+      "teamA": "France",
+      "teamB": "Iraq",
+      "ownerA": "Yen",
+      "ownerB": "Hashim",
+      "goalsA": 3,
+      "goalsB": 0,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537394",
+      "date": "2026-06-23T00:00:00Z",
+      "teamA": "Norway",
+      "teamB": "Senegal",
+      "ownerA": "Zach",
+      "ownerB": "Zach",
+      "goalsA": 3,
+      "goalsB": 2,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
