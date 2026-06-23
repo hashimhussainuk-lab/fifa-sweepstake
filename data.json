@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-23T04:02:16.852Z",
+  "updatedAt": "2026-06-23T08:04:17.566Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -625,6 +625,21 @@
       "ownerA": "Zach",
       "ownerB": "Zach",
       "goalsA": 3,
+      "goalsB": 2,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537400",
+      "date": "2026-06-23T03:00:00Z",
+      "teamA": "Jordan",
+      "teamB": "Algeria",
+      "ownerA": "Hashim",
+      "ownerB": "Yen",
+      "goalsA": 1,
       "goalsB": 2,
       "cardsA": 0,
       "cardsB": 0,
