@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-24T00:03:15.985Z",
+  "updatedAt": "2026-06-24T04:47:38.134Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -670,6 +670,36 @@
       "ownerA": "Joe D",
       "ownerB": "Faizan",
       "goalsA": 0,
+      "goalsB": 0,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537412",
+      "date": "2026-06-23T23:00:00Z",
+      "teamA": "Panama",
+      "teamB": "Croatia",
+      "ownerA": "Faizan",
+      "ownerB": "Adam",
+      "goalsA": 0,
+      "goalsB": 1,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537406",
+      "date": "2026-06-24T02:00:00Z",
+      "teamA": "Colombia",
+      "teamB": "Congo DR",
+      "ownerA": "Yen",
+      "ownerB": "Joe S",
+      "goalsA": 1,
       "goalsB": 0,
       "cardsA": 0,
       "cardsB": 0,
