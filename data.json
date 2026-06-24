@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-24T20:19:03.635Z",
+  "updatedAt": "2026-06-24T21:54:49.908Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -701,6 +701,36 @@
       "ownerB": "Joe S",
       "goalsA": 1,
       "goalsB": 0,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537337",
+      "date": "2026-06-24T19:00:00Z",
+      "teamA": "Switzerland",
+      "teamB": "Canada",
+      "ownerA": "Joe D",
+      "ownerB": "Joe S",
+      "goalsA": 2,
+      "goalsB": 1,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537338",
+      "date": "2026-06-24T19:00:00Z",
+      "teamA": "Bosnia-Herzegovina",
+      "teamB": "Qatar",
+      "ownerA": "",
+      "ownerB": "Hashim",
+      "goalsA": 3,
+      "goalsB": 1,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
