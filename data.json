@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-25T01:32:42.172Z",
+  "updatedAt": "2026-06-25T06:13:54.811Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -761,6 +761,36 @@
       "ownerB": "Yen",
       "goalsA": 0,
       "goalsB": 3,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537331",
+      "date": "2026-06-25T01:00:00Z",
+      "teamA": "Czechia",
+      "teamB": "Mexico",
+      "ownerA": "",
+      "ownerB": "Adam",
+      "goalsA": 0,
+      "goalsB": 3,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537332",
+      "date": "2026-06-25T01:00:00Z",
+      "teamA": "South Africa",
+      "teamB": "South Korea",
+      "ownerA": "Hashim",
+      "ownerB": "",
+      "goalsA": 1,
+      "goalsB": 0,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
