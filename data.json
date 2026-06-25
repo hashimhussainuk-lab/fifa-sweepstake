@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-25T12:26:18.822Z",
+  "updatedAt": "2026-06-25T15:26:04.647Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -24,8 +24,8 @@
       "teamB": "Bosnia-Herzegovina",
       "ownerA": "Joe S",
       "ownerB": "",
-      "goalsA": 0,
-      "goalsB": 0,
+      "goalsA": 1,
+      "goalsB": 1,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
