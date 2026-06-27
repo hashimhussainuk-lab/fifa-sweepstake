@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-27T17:38:47.839Z",
+  "updatedAt": "2026-06-27T19:36:47.756Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -888,36 +888,6 @@
       "source": "football-data.org"
     },
     {
-      "id": "537395",
-      "date": "2026-06-26T19:00:00Z",
-      "teamA": "Norway",
-      "teamB": "France",
-      "ownerA": "Zach",
-      "ownerB": "Yen",
-      "goalsA": 1,
-      "goalsB": 4,
-      "cardsA": 0,
-      "cardsB": 0,
-      "quickGoalTeam": "",
-      "quickGoalMinute": null,
-      "source": "football-data.org"
-    },
-    {
-      "id": "537396",
-      "date": "2026-06-26T19:00:00Z",
-      "teamA": "Senegal",
-      "teamB": "Iraq",
-      "ownerA": "Zach",
-      "ownerB": "Hashim",
-      "goalsA": 5,
-      "goalsB": 0,
-      "cardsA": 0,
-      "cardsB": 0,
-      "quickGoalTeam": "",
-      "quickGoalMinute": null,
-      "source": "football-data.org"
-    },
-    {
       "id": "537373",
       "date": "2026-06-27T00:00:00Z",
       "teamA": "Uruguay",
@@ -970,7 +940,7 @@
       "ownerA": "Laura",
       "ownerB": "Joe D",
       "goalsA": 1,
-      "goalsB": 1,
+      "goalsB": 2,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
