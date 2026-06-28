@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-27T22:38:04.192Z",
+  "updatedAt": "2026-06-28T00:07:47.465Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -970,6 +970,36 @@
       "ownerA": "Laura",
       "ownerB": "Joe D",
       "goalsA": 1,
+      "goalsB": 1,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537413",
+      "date": "2026-06-27T21:00:00Z",
+      "teamA": "Panama",
+      "teamB": "England",
+      "ownerA": "Faizan",
+      "ownerB": "Joe D",
+      "goalsA": 0,
+      "goalsB": 2,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537414",
+      "date": "2026-06-27T21:00:00Z",
+      "teamA": "Croatia",
+      "teamB": "Ghana",
+      "ownerA": "Adam",
+      "ownerB": "Faizan",
+      "goalsA": 2,
       "goalsB": 1,
       "cardsA": 0,
       "cardsB": 0,
