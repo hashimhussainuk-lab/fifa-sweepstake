@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-30T17:25:11.489Z",
+  "updatedAt": "2026-06-30T19:21:04.838Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -1121,6 +1121,21 @@
       "ownerB": "Adam",
       "goalsA": 3,
       "goalsB": 4,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537424",
+      "date": "2026-06-30T17:00:00Z",
+      "teamA": "Ivory Coast",
+      "teamB": "Norway",
+      "ownerA": "",
+      "ownerB": "Zach",
+      "goalsA": 1,
+      "goalsB": 2,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
