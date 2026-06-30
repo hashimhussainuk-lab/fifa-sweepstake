@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-30T01:31:41.969Z",
+  "updatedAt": "2026-06-30T06:18:26.898Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -1106,6 +1106,21 @@
       "ownerB": "Laura",
       "goalsA": 4,
       "goalsB": 5,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537418",
+      "date": "2026-06-30T01:00:00Z",
+      "teamA": "Netherlands",
+      "teamB": "Morocco",
+      "ownerA": "Adam",
+      "ownerB": "Adam",
+      "goalsA": 3,
+      "goalsB": 4,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
