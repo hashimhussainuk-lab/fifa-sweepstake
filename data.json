@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-01T00:13:14.897Z",
+  "updatedAt": "2026-07-01T05:07:33.121Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -1150,6 +1150,21 @@
       "ownerA": "Yen",
       "ownerB": "Joe D",
       "goalsA": 3,
+      "goalsB": 0,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537425",
+      "date": "2026-07-01T01:00:00Z",
+      "teamA": "Mexico",
+      "teamB": "Ecuador",
+      "ownerA": "Adam",
+      "ownerB": "Laura",
+      "goalsA": 2,
       "goalsB": 0,
       "cardsA": 0,
       "cardsB": 0,
