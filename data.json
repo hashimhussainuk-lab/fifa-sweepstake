@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-01T17:30:09.842Z",
+  "updatedAt": "2026-07-01T19:21:54.838Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -1166,6 +1166,21 @@
       "ownerB": "Laura",
       "goalsA": 2,
       "goalsB": 0,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537426",
+      "date": "2026-07-01T16:00:00Z",
+      "teamA": "England",
+      "teamB": "Congo DR",
+      "ownerA": "Joe D",
+      "ownerB": "Joe S",
+      "goalsA": 2,
+      "goalsB": 1,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
