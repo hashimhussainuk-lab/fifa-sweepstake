@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-01T22:48:52.516Z",
+  "updatedAt": "2026-07-02T00:14:20.694Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -1181,6 +1181,21 @@
       "ownerB": "Joe S",
       "goalsA": 2,
       "goalsB": 1,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537422",
+      "date": "2026-07-01T20:00:00Z",
+      "teamA": "Belgium",
+      "teamB": "Senegal",
+      "ownerA": "Laura",
+      "ownerB": "Zach",
+      "goalsA": 3,
+      "goalsB": 2,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
