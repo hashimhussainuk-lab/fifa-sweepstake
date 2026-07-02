@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-02T00:14:20.694Z",
+  "updatedAt": "2026-07-02T04:42:25.088Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -1159,7 +1159,7 @@
     },
     {
       "id": "537425",
-      "date": "2026-07-01T01:00:00Z",
+      "date": "2026-07-01T02:00:00Z",
       "teamA": "Mexico",
       "teamB": "Ecuador",
       "ownerA": "Adam",
@@ -1196,6 +1196,21 @@
       "ownerB": "Zach",
       "goalsA": 3,
       "goalsB": 2,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537421",
+      "date": "2026-07-02T00:00:00Z",
+      "teamA": "United States",
+      "teamB": "Bosnia-Herzegovina",
+      "ownerA": "Joe S",
+      "ownerB": "",
+      "goalsA": 2,
+      "goalsB": 0,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
