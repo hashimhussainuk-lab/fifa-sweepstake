@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T00:11:47.159Z",
+  "updatedAt": "2026-07-03T04:26:53.862Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -1226,6 +1226,21 @@
       "ownerB": "Joe D",
       "goalsA": 3,
       "goalsB": 0,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537419",
+      "date": "2026-07-02T23:00:00Z",
+      "teamA": "Portugal",
+      "teamB": "Croatia",
+      "ownerA": "Laura",
+      "ownerB": "Adam",
+      "goalsA": 2,
+      "goalsB": 1,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
