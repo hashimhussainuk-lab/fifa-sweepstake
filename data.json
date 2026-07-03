@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T19:59:01.470Z",
+  "updatedAt": "2026-07-03T21:19:08.970Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -1256,6 +1256,21 @@
       "ownerB": "Yen",
       "goalsA": 2,
       "goalsB": 0,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537428",
+      "date": "2026-07-03T18:00:00Z",
+      "teamA": "Australia",
+      "teamB": "Egypt",
+      "ownerA": "Faizan",
+      "ownerB": "Laura",
+      "goalsA": 3,
+      "goalsB": 5,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
