@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-04T00:10:17.513Z",
+  "updatedAt": "2026-07-04T04:21:11.640Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -1271,6 +1271,36 @@
       "ownerB": "Laura",
       "goalsA": 3,
       "goalsB": 5,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537427",
+      "date": "2026-07-03T22:00:00Z",
+      "teamA": "Argentina",
+      "teamB": "Cape Verde Islands",
+      "ownerA": "Faizan",
+      "ownerB": "Joe D",
+      "goalsA": 3,
+      "goalsB": 2,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537430",
+      "date": "2026-07-04T01:30:00Z",
+      "teamA": "Colombia",
+      "teamB": "Ghana",
+      "ownerA": "Yen",
+      "ownerB": "Faizan",
+      "goalsA": 1,
+      "goalsB": 0,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
