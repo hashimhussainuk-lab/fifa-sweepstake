@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-04T18:05:53.082Z",
+  "updatedAt": "2026-07-04T19:46:02.220Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -1301,6 +1301,21 @@
       "ownerB": "Faizan",
       "goalsA": 1,
       "goalsB": 0,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537376",
+      "date": "2026-07-04T17:00:00Z",
+      "teamA": "Canada",
+      "teamB": "Morocco",
+      "ownerA": "Joe S",
+      "ownerB": "Adam",
+      "goalsA": 0,
+      "goalsB": 3,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
