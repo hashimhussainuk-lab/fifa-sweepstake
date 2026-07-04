@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-04T22:29:58.627Z",
+  "updatedAt": "2026-07-04T23:38:20.793Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -1316,6 +1316,21 @@
       "ownerB": "Adam",
       "goalsA": 0,
       "goalsB": 3,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537375",
+      "date": "2026-07-04T21:00:00Z",
+      "teamA": "Paraguay",
+      "teamB": "France",
+      "ownerA": "Laura",
+      "ownerB": "Yen",
+      "goalsA": 0,
+      "goalsB": 1,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
