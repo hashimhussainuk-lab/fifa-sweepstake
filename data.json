@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-05T21:08:23.487Z",
+  "updatedAt": "2026-07-05T22:32:02.744Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -1331,6 +1331,21 @@
       "ownerB": "Yen",
       "goalsA": 0,
       "goalsB": 1,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537377",
+      "date": "2026-07-05T20:00:00Z",
+      "teamA": "Brazil",
+      "teamB": "Norway",
+      "ownerA": "Yen",
+      "ownerB": "Zach",
+      "goalsA": 1,
+      "goalsB": 2,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
