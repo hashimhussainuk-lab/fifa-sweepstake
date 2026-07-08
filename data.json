@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-07T22:38:56.814Z",
+  "updatedAt": "2026-07-08T00:02:47.864Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -1406,6 +1406,21 @@
       "ownerB": "Laura",
       "goalsA": 3,
       "goalsB": 2,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537382",
+      "date": "2026-07-07T20:00:00Z",
+      "teamA": "Switzerland",
+      "teamB": "Colombia",
+      "ownerA": "Joe D",
+      "ownerB": "Yen",
+      "goalsA": 4,
+      "goalsB": 3,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
