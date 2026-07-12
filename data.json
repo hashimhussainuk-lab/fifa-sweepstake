@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-12T01:08:33.881Z",
+  "updatedAt": "2026-07-12T04:55:51.877Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -1451,6 +1451,21 @@
       "ownerB": "Joe D",
       "goalsA": 1,
       "goalsB": 2,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537386",
+      "date": "2026-07-12T01:00:00Z",
+      "teamA": "Argentina",
+      "teamB": "Switzerland",
+      "ownerA": "Faizan",
+      "ownerB": "Joe D",
+      "goalsA": 3,
+      "goalsB": 1,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
