@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-12T04:55:51.877Z",
+  "updatedAt": "2026-07-12T07:32:06.615Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -1346,6 +1346,21 @@
       "ownerB": "Zach",
       "goalsA": 1,
       "goalsB": 2,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537378",
+      "date": "2026-07-06T01:00:00Z",
+      "teamA": "Mexico",
+      "teamB": "England",
+      "ownerA": "Adam",
+      "ownerB": "Joe D",
+      "goalsA": 2,
+      "goalsB": 3,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
