@@ -104,7 +104,43 @@ const allTeams = Object.entries(TEAMS_BY_PERSON).flatMap(([person, teams]) =>
   teams.map(team => ({ team, person }))
 );
 
+const TEAM_ALIASES = {
+  "Bosnia-Herzegovina": "Bosnia and Herzegovina",
+  "Czechia": "Czech Republic",
+  "Ivory Coast": "Côte d'Ivoire",
+  "South Korea": "Korea Republic"
+};
+
 const ownerByTeam = Object.fromEntries(allTeams.map(x => [x.team, x.person]));
+
+function canonicalTeam(team) {
+  return TEAM_ALIASES[team] || team;
+}
+
+function ownerForTeam(team) {
+  return ownerByTeam[canonicalTeam(team)] || "Unassigned";
+}
+
+function displayDate(value) {
+  if (!value) return "—";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+  return new Intl.DateTimeFormat("en-GB", { dateStyle: "medium", timeStyle: "short" }).format(date);
+}
+
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    "\"": "&quot;",
+    "'": "&#39;"
+  }[char]));
+}
+
+function matchOwnerLine(match) {
+  return `${ownerForTeam(match.teamA)} vs ${ownerForTeam(match.teamB)}`;
+}
 
 let state = loadState();
 
@@ -197,15 +233,17 @@ function calcStats() {
   }]));
 
   for (const m of state.matches) {
-    if (!teamStats[m.teamA] || !teamStats[m.teamB]) continue;
-    teamStats[m.teamA].played += 1;
-    teamStats[m.teamB].played += 1;
-    teamStats[m.teamA].for += m.goalsA;
-    teamStats[m.teamA].against += m.goalsB;
-    teamStats[m.teamA].cards += m.cardsA;
-    teamStats[m.teamB].for += m.goalsB;
-    teamStats[m.teamB].against += m.goalsA;
-    teamStats[m.teamB].cards += m.cardsB;
+    const teamA = canonicalTeam(m.teamA);
+    const teamB = canonicalTeam(m.teamB);
+    if (!teamStats[teamA] || !teamStats[teamB]) continue;
+    teamStats[teamA].played += 1;
+    teamStats[teamB].played += 1;
+    teamStats[teamA].for += m.goalsA;
+    teamStats[teamA].against += m.goalsB;
+    teamStats[teamA].cards += m.cardsA;
+    teamStats[teamB].for += m.goalsB;
+    teamStats[teamB].against += m.goalsA;
+    teamStats[teamB].cards += m.cardsB;
   }
 
   const people = Object.fromEntries(Object.keys(TEAMS_BY_PERSON).map(person => [person, {
@@ -243,7 +281,7 @@ function renderDashboard(stats) {
   document.getElementById("cardsLeader").textContent = leaderTextForMax(stats.people, "cards");
 
   document.getElementById("quickestLeader").textContent = stats.quickest
-    ? `${ownerByTeam[stats.quickest.quickGoalTeam]} — ${stats.quickest.quickGoalTeam} (${stats.quickest.quickGoalMinute}')`
+    ? `${ownerForTeam(stats.quickest.quickGoalTeam)} — ${stats.quickest.quickGoalTeam} (${stats.quickest.quickGoalMinute}')`
     : "TBC";
 
   document.getElementById("gdLeader").textContent = stats.gdMatch
@@ -253,7 +291,7 @@ function renderDashboard(stats) {
   document.getElementById("championLeader").textContent = state.champion || "TBC";
   document.getElementById("runnerLeader").textContent = state.runnerUp || "TBC";
 
-  document.querySelector("#participantTable tbody").innerHTML = people.map(p => {
+  document.querySelector("#participantTable tbody").innerHTML = people.map((p, index) => {
     const tags = [];
     const maxAgainst = Math.max(...stats.people.map(x => x.against));
     const maxCards = Math.max(...stats.people.map(x => x.cards));
@@ -261,12 +299,13 @@ function renderDashboard(stats) {
     if (p.cards > 0 && p.cards === maxCards) tags.push("Most Cards");
     return `
       <tr>
-        <td><strong>${p.person}</strong></td>
-        <td>${p.teams.length}</td>
-        <td>${p.for}</td>
-        <td>${p.against}</td>
-        <td>${p.cards}</td>
-        <td>${tags.length ? tags.join(", ") : "—"}</td>
+        <td data-label="Rank"><span class="rank-badge">#${index + 1}</span></td>
+        <td data-label="Person"><strong>${p.person}</strong><small>${p.teams.length} teams</small></td>
+        <td data-label="Played">${p.played}</td>
+        <td data-label="GF">${p.for}</td>
+        <td data-label="GA">${p.against}</td>
+        <td data-label="Cards">${p.cards}</td>
+        <td data-label="Prize Status">${tags.length ? tags.map(tag => `<span class="tag">${tag}</span>`).join(" ") : "—"}</td>
       </tr>
     `;
   }).join("");
@@ -282,17 +321,30 @@ function renderDashboard(stats) {
 }
 
 function renderMatches() {
-  const tbody = document.querySelector("#matchTable tbody");
-  tbody.innerHTML = state.matches.map(m => `
+  const sortedMatches = [...state.matches].sort((a, b) => new Date(b.date) - new Date(a.date));
+  document.getElementById("matchCount").textContent = `${sortedMatches.length} ${sortedMatches.length === 1 ? "match" : "matches"}`;
+
+  document.querySelector("#matchTable tbody").innerHTML = sortedMatches.map(m => `
     <tr>
-      <td>${m.date || "—"}</td>
-      <td>${m.teamA} vs ${m.teamB}</td>
+      <td>${displayDate(m.date)}</td>
+      <td><strong>${escapeHtml(m.teamA)}</strong> vs <strong>${escapeHtml(m.teamB)}</strong></td>
+      <td>${escapeHtml(matchOwnerLine(m))}</td>
       <td><strong>${m.goalsA}-${m.goalsB}</strong></td>
       <td>${Math.abs(m.goalsA - m.goalsB)}</td>
       <td>${m.cardsA + m.cardsB}</td>
-      <td>${m.quickGoalTeam ? `${m.quickGoalTeam} (${m.quickGoalMinute}')` : "—"}</td>
-      <td><button onclick="deleteMatch('${m.id}')" class="danger">Delete</button></td>
+      <td>${m.quickGoalTeam ? `${escapeHtml(m.quickGoalTeam)} (${m.quickGoalMinute}')` : "—"}</td>
+      <td>${m.source ? `<span class="source-pill">${escapeHtml(m.source)}</span>` : `<button onclick="deleteMatch('${m.id}')" class="danger">Delete</button>`}</td>
     </tr>
+  `).join("");
+
+  document.getElementById("matchCards").innerHTML = sortedMatches.map(m => `
+    <article class="match-card">
+      <div class="match-meta"><span>${displayDate(m.date)}</span>${m.source ? `<span class="source-pill">${escapeHtml(m.source)}</span>` : ""}</div>
+      <div class="match-score"><span>${escapeHtml(m.teamA)}</span><strong>${m.goalsA}-${m.goalsB}</strong><span>${escapeHtml(m.teamB)}</span></div>
+      <div class="match-owners">${escapeHtml(matchOwnerLine(m))}</div>
+      <div class="match-stats"><span>GD ${Math.abs(m.goalsA - m.goalsB)}</span><span>${m.cardsA + m.cardsB} cards</span><span>${m.quickGoalTeam ? `Fastest: ${escapeHtml(m.quickGoalTeam)} ${m.quickGoalMinute}'` : "No quickest goal"}</span></div>
+      ${m.source ? "" : `<button onclick="deleteMatch('${m.id}')" class="danger">Delete</button>`}
+    </article>
   `).join("");
 }
 
@@ -309,12 +361,12 @@ function renderPeople(stats) {
       <article class="person-card">
         <div class="person-head">
           <h2>${person}</h2>
-          <p>GF ${p.for} · GA ${p.against} · Cards ${p.cards}</p>
+          <p>${p.played} played · GF ${p.for} · GA ${p.against} · Cards ${p.cards}</p>
         </div>
         <div class="team-list">
           ${teams.map(team => {
             const s = stats.teamStats[team];
-            return `<div class="team-pill"><span>${team}</span><span>${s.for}-${s.against} · ${s.cards} cards</span></div>`;
+            return `<div class="team-pill"><span>${team}</span><span>${s.played}P · ${s.for}-${s.against} · ${s.cards} cards</span></div>`;
           }).join("")}
         </div>
       </article>
@@ -370,7 +422,12 @@ async function loadSharedData() {
 
     if (Array.isArray(sharedData.matches)) {
       state.matches = sharedData.matches;
+      state.updatedAt = sharedData.updatedAt || "";
       saveState();
+    }
+
+    if (sharedData.updatedAt) {
+      document.getElementById("lastUpdated").textContent = `Updated ${displayDate(sharedData.updatedAt)}`;
     }
   } catch (error) {
     console.warn("Could not load shared data.json", error);
