@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-14T20:39:54.948Z",
+  "updatedAt": "2026-07-14T22:02:57.594Z",
   "note": "Scores are API-updated. Cards and quickest goal may require manual entry unless event data is added.",
   "matches": [
     {
@@ -1481,6 +1481,21 @@
       "ownerB": "Joe D",
       "goalsA": 3,
       "goalsB": 1,
+      "cardsA": 0,
+      "cardsB": 0,
+      "quickGoalTeam": "",
+      "quickGoalMinute": null,
+      "source": "football-data.org"
+    },
+    {
+      "id": "537387",
+      "date": "2026-07-14T19:00:00Z",
+      "teamA": "France",
+      "teamB": "Spain",
+      "ownerA": "Yen",
+      "ownerB": "Zach",
+      "goalsA": 0,
+      "goalsB": 2,
       "cardsA": 0,
       "cardsB": 0,
       "quickGoalTeam": "",
