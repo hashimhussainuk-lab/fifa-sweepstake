@@ -269,6 +269,57 @@ function calcStats() {
   return { teamStats, people: Object.values(people), quickest, gdMatch };
 }
 
+function finalResult() {
+  return state.matches.find(match => String(match.id) === "537390") || null;
+}
+
+function recapPrizeRows(stats) {
+  const final = finalResult();
+  const championTeam = final && final.goalsA !== final.goalsB
+    ? (final.goalsA > final.goalsB ? final.teamA : final.teamB)
+    : "Spain";
+  const runnerTeam = final && final.goalsA !== final.goalsB
+    ? (final.goalsA > final.goalsB ? final.teamB : final.teamA)
+    : "Argentina";
+  const champion = state.champion || ownerForTeam(championTeam);
+  const runnerUp = state.runnerUp || ownerForTeam(runnerTeam);
+  const maxAgainst = Math.max(...stats.people.map(person => person.against));
+  const concededWinners = stats.people.filter(person => person.against === maxAgainst);
+  const gdOwners = stats.gdMatch
+    ? [...new Set([ownerForTeam(stats.gdMatch.teamA), ownerForTeam(stats.gdMatch.teamB)])]
+    : [];
+
+  return [
+    { label: "Sweepstake champion", people: champion, detail: `${championTeam} · £100`, status: "confirmed" },
+    { label: "Runner-up", people: runnerUp, detail: `${runnerTeam} · £40`, status: "confirmed" },
+    { label: "Most goals conceded", people: concededWinners.map(person => person.person).join(" & "), detail: `${maxAgainst} each · £${(25 / concededWinners.length).toFixed(2)} each`, status: "confirmed" },
+    { label: "Biggest winning margin", people: gdOwners.join(" & "), detail: stats.gdMatch ? `${stats.gdMatch.teamA} ${stats.gdMatch.goalsA}–${stats.gdMatch.goalsB} ${stats.gdMatch.teamB} · £${(25 / gdOwners.length).toFixed(2)} each` : "Awaiting result", status: stats.gdMatch ? "confirmed" : "pending" },
+    { label: "Most cards", people: stats.people.some(person => person.cards > 0) ? leaderTextForMax(stats.people, "cards") : "Awaiting confirmation", detail: "£25 prize", status: stats.people.some(person => person.cards > 0) ? "confirmed" : "pending" },
+    { label: "Quickest goal", people: stats.quickest ? `${ownerForTeam(stats.quickest.quickGoalTeam)} · ${stats.quickest.quickGoalTeam}` : "Awaiting confirmation", detail: stats.quickest ? `${stats.quickest.quickGoalMinute}' · £25` : "£25 prize", status: stats.quickest ? "confirmed" : "pending" }
+  ];
+}
+
+function renderFinalRecap(stats) {
+  const rows = recapPrizeRows(stats);
+  const amounts = [100, 40, 25, 25, 25, 25];
+  const confirmedTotal = rows.reduce((total, row, index) => total + (row.status === "confirmed" ? amounts[index] : 0), 0);
+  const remaining = 240 - confirmedTotal;
+
+  document.getElementById("recapWinners").innerHTML = rows.map(row => `
+    <article class="recap-winner ${row.status}">
+      <span class="recap-status">${row.status === "confirmed" ? "Confirmed" : "To confirm"}</span>
+      <small>${escapeHtml(row.label)}</small>
+      <strong>${escapeHtml(row.people)}</strong>
+      <p>${escapeHtml(row.detail)}</p>
+    </article>
+  `).join("");
+  document.getElementById("confirmedPrizeTotal").textContent = `${money(confirmedTotal)} of £240`;
+  document.getElementById("confirmedPrizeBar").style.width = `${(confirmedTotal / 240) * 100}%`;
+  document.getElementById("remainingPrizeNote").textContent = remaining
+    ? `${money(remaining)} remains awaiting the Most Cards and Quickest Goal records.`
+    : "Every prize is confirmed — the full £240 pot has been allocated.";
+}
+
 function leaderTextForMax(rows, key) {
   const max = Math.max(...rows.map(r => r[key]));
   if (!Number.isFinite(max) || max <= 0) return "TBC";
@@ -288,8 +339,9 @@ function renderDashboard(stats) {
     ? `${stats.gdMatch.teamA} ${stats.gdMatch.goalsA}-${stats.gdMatch.goalsB} ${stats.gdMatch.teamB}`
     : "TBC";
 
-  document.getElementById("championLeader").textContent = state.champion || "TBC";
-  document.getElementById("runnerLeader").textContent = state.runnerUp || "TBC";
+  const recapRows = recapPrizeRows(stats);
+  document.getElementById("championLeader").textContent = recapRows[0].people;
+  document.getElementById("runnerLeader").textContent = recapRows[1].people;
 
   document.querySelector("#participantTable tbody").innerHTML = people.map((p, index) => {
     const tags = [];
@@ -311,8 +363,8 @@ function renderDashboard(stats) {
   }).join("");
 
   document.getElementById("prizeTracker").innerHTML = `
-    <div class="prize-item"><strong>Champion — £100</strong><span>${state.champion || "TBC after final"}</span></div>
-    <div class="prize-item"><strong>Runner-Up — £40</strong><span>${state.runnerUp || "TBC after final"}</span></div>
+    <div class="prize-item"><strong>Champion — £100</strong><span>${recapRows[0].people} · Spain</span></div>
+    <div class="prize-item"><strong>Runner-Up — £40</strong><span>${recapRows[1].people} · Argentina</span></div>
     <div class="prize-item"><strong>Most Goals Conceded — £25</strong><span>${document.getElementById("concededLeader").textContent}</span></div>
     <div class="prize-item"><strong>Most Cards — £25</strong><span>${document.getElementById("cardsLeader").textContent}</span></div>
     <div class="prize-item"><strong>Quickest Goal — £25</strong><span>${document.getElementById("quickestLeader").textContent}</span></div>
@@ -436,6 +488,7 @@ async function loadSharedData() {
 
 function render() {
   const stats = calcStats();
+  renderFinalRecap(stats);
   renderDashboard(stats);
   renderMatches();
   renderPeople(stats);

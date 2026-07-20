@@ -13,11 +13,11 @@
     <header class="hero" id="top">
       <div class="hero-copy">
         <p class="eyebrow">HostUplift World Cup 2026</p>
-        <h1>FIFA Sweepstake Command Centre</h1>
-        <p class="sub">Live leaderboard, match log and organiser tools for the £240 HostUplift matched prize pot.</p>
+        <h1>World Cup Sweepstake — Final Recap</h1>
+        <p class="sub">The tournament is over. See who won, how the £240 HostUplift prize pot was shared, and the moments that decided it.</p>
         <div class="hero-actions" aria-label="Quick actions">
-          <button class="tab hero-cta active" data-tab="dashboard">View dashboard</button>
-          <button class="tab hero-ghost" data-tab="matches">Add result</button>
+          <button class="tab hero-cta active" data-tab="dashboard">View final recap</button>
+          <button class="tab hero-ghost" data-tab="matches">Browse all results</button>
         </div>
       </div>
       <aside class="pot-card" aria-label="Prize pot summary">
@@ -28,7 +28,7 @@
     </header>
 
     <nav class="tabs sticky-tabs" aria-label="Main navigation">
-      <button class="tab active" data-tab="dashboard">Dashboard</button>
+      <button class="tab active" data-tab="dashboard">Final recap</button>
       <button class="tab" data-tab="matches">Matches</button>
       <button class="tab" data-tab="people">Players</button>
       <button class="tab" data-tab="rules">Rules</button>
@@ -37,10 +37,30 @@
 
     <main>
       <section id="dashboard" class="panel active-panel">
+        <section class="final-recap" aria-labelledby="finalRecapTitle">
+          <div class="recap-kicker"><span class="recap-dot"></span> Tournament complete · 19 July 2026</div>
+          <div class="recap-heading">
+            <div>
+              <p class="eyebrow">The final whistle</p>
+              <h2 id="finalRecapTitle">Zach wins the sweepstake</h2>
+              <p>Spain defeated Argentina 1–0 after extra time, making Zach our 2026 champion and Faizan the runner-up.</p>
+            </div>
+            <div class="final-score" aria-label="World Cup final score">
+              <span>Spain</span><strong>1–0</strong><span>Argentina</span><small>After extra time</small>
+            </div>
+          </div>
+          <div class="recap-winners" id="recapWinners"></div>
+          <div class="recap-progress">
+            <div><span>Confirmed prizes</span><strong id="confirmedPrizeTotal">£190 of £240</strong></div>
+            <div class="progress-track"><span id="confirmedPrizeBar"></span></div>
+            <p id="remainingPrizeNote">£50 remains awaiting the Most Cards and Quickest Goal records.</p>
+          </div>
+        </section>
+
         <div class="section-title">
           <div>
-            <p class="eyebrow">Current projections</p>
-            <h2>Prize Race</h2>
+            <p class="eyebrow">Final results</p>
+            <h2>Prize Winners</h2>
           </div>
           <p id="lastUpdated" class="status-pill">Waiting for data.json</p>
         </div>
@@ -58,8 +78,8 @@
           <section class="card leaderboard-card">
             <div class="card-head">
               <div>
-                <p class="eyebrow">Leaderboard</p>
-                <h2>Participant Standings</h2>
+                <p class="eyebrow">Tournament totals</p>
+                <h2>Participant Results</h2>
               </div>
               <p>Ranked by goals conceded, then cards.</p>
             </div>

@@ -85,7 +85,9 @@ function simplifyDashboard() {
       </div>
     </div>`;
 
-  dashboard.insertBefore(playerHome, dashboard.firstChild);
+  const recap = dashboard.querySelector(".final-recap");
+  if (recap) recap.insertAdjacentElement("afterend", playerHome);
+  else dashboard.insertBefore(playerHome, dashboard.firstChild);
 
   const select = document.getElementById("playerSelect");
   select.innerHTML += Object.keys(TEAMS_BY_PERSON).map(name =>
@@ -118,7 +120,7 @@ function simplifyDashboard() {
   }
 
   const tabs = document.querySelectorAll(".sticky-tabs .tab");
-  const labels = ["Home", "Matches", "All players", "Prizes", "Organiser"];
+  const labels = ["Final recap", "Matches", "All players", "Prizes", "Organiser"];
   tabs.forEach((tab, index) => { if (labels[index]) tab.textContent = labels[index]; });
 
   const saved = localStorage.getItem(PLAYER_VIEW_KEY);

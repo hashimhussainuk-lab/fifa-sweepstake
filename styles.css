@@ -112,6 +112,52 @@ button, .file-button {
 .panel { display: none; }
 .active-panel { display: block; }
 
+.final-recap {
+  padding: clamp(22px, 4vw, 38px);
+  margin-bottom: 24px;
+  border: 1px solid rgba(255, 230, 109, .32);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 85% 10%, rgba(255, 230, 109, .15), transparent 22rem),
+    linear-gradient(135deg, rgba(18, 42, 34, .98), rgba(8, 25, 20, .94));
+  box-shadow: var(--shadow);
+}
+
+.recap-kicker {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 26px;
+  color: var(--accent-2);
+  font-size: .82rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.recap-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 18px var(--accent-2); }
+.recap-heading { display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: center; }
+.recap-heading h2 { margin-bottom: 10px; font-size: clamp(2rem, 5vw, 4rem); line-height: 1; }
+.recap-heading p { max-width: 660px; margin-bottom: 0; color: var(--muted); }
+.final-score { min-width: 220px; padding: 20px; display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: center; text-align: center; border: 1px solid var(--line); border-radius: 18px; background: rgba(0, 0, 0, .2); }
+.final-score strong { color: var(--accent-2); font-size: 2.2rem; }
+.final-score small { grid-column: 1 / -1; color: var(--muted); }
+.recap-winners { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 28px; }
+.recap-winner { position: relative; min-height: 150px; padding: 20px; overflow: hidden; border: 1px solid var(--line); border-radius: 17px; background: rgba(255, 255, 255, .045); }
+.recap-winner.confirmed { border-color: rgba(78, 255, 168, .22); }
+.recap-winner.pending { border-style: dashed; }
+.recap-winner small, .recap-winner strong { display: block; }
+.recap-winner small { margin: 18px 0 7px; color: var(--muted); }
+.recap-winner strong { font-size: 1.15rem; }
+.recap-winner p { margin: 6px 0 0; color: var(--accent-2); font-size: .9rem; }
+.recap-status { position: absolute; top: 14px; right: 14px; padding: 5px 8px; border-radius: 999px; color: #07130f; background: var(--accent); font-size: .68rem; font-weight: 900; text-transform: uppercase; }
+.pending .recap-status { color: var(--text); background: rgba(255, 255, 255, .1); }
+.recap-progress { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--line); }
+.recap-progress > div:first-child { display: flex; justify-content: space-between; gap: 16px; }
+.progress-track { height: 8px; margin: 10px 0; overflow: hidden; border-radius: 99px; background: rgba(255, 255, 255, .08); }
+.progress-track span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+.recap-progress p { margin: 0; color: var(--muted); font-size: .86rem; }
+
 .grid {
   display: grid;
   gap: 16px;
@@ -317,6 +363,7 @@ pre {
   .match-form { grid-template-columns: repeat(2, 1fr); }
   .people-grid { grid-template-columns: repeat(2, 1fr); }
   .pot-card { text-align: left; }
+  .recap-winners { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 640px) {
@@ -324,6 +371,9 @@ pre {
   .hero { padding: 22px; }
   .metrics, .match-form, .people-grid { grid-template-columns: 1fr; }
   h1 { font-size: 2.4rem; }
+  .recap-heading { grid-template-columns: 1fr; }
+  .recap-winners { grid-template-columns: 1fr; }
+  .final-score { min-width: 0; }
 }
 
 /* Revamp layer */
