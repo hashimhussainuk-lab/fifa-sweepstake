@@ -111,6 +111,30 @@ const TEAM_ALIASES = {
   "South Korea": "Korea Republic"
 };
 
+// Final tournament discipline totals: yellow cards + red cards.
+// Stored as the completed-tournament record for the final recap.
+const FINAL_TEAM_CARDS = {
+  "Argentina": 14, "Egypt": 12, "Canada": 11, "Paraguay": 10,
+  "Ecuador": 9, "England": 9, "Bosnia and Herzegovina": 8, "United States": 8,
+  "Brazil": 8, "Colombia": 8, "Belgium": 7, "Switzerland": 7,
+  "Curaçao": 7, "Haiti": 7, "Morocco": 7, "Portugal": 7,
+  "South Africa": 7, "Congo DR": 6, "France": 6, "Ghana": 6,
+  "Iran": 6, "Saudi Arabia": 6, "Spain": 6, "Uruguay": 6,
+  "Qatar": 6, "Iraq": 5, "Mexico": 5, "Australia": 5,
+  "Austria": 5, "Cape Verde Islands": 5, "Panama": 5, "Scotland": 5,
+  "Sweden": 5, "Croatia": 4, "Côte d'Ivoire": 4, "Japan": 4,
+  "Jordan": 4, "New Zealand": 4, "Korea Republic": 4, "Uzbekistan": 4,
+  "Algeria": 3, "Germany": 3, "Netherlands": 3, "Norway": 3,
+  "Senegal": 3, "Turkey": 2, "Czech Republic": 1, "Tunisia": 1
+};
+
+const FINAL_QUICKEST_GOAL = {
+  team: "Paraguay",
+  minute: 64 / 60,
+  display: "64 seconds",
+  opponent: "Turkey"
+};
+
 const ownerByTeam = Object.fromEntries(allTeams.map(x => [x.team, x.person]));
 
 function canonicalTeam(team) {
@@ -246,6 +270,10 @@ function calcStats() {
     teamStats[teamB].cards += m.cardsB;
   }
 
+  for (const [team, cards] of Object.entries(FINAL_TEAM_CARDS)) {
+    if (teamStats[team]) teamStats[team].cards = cards;
+  }
+
   const people = Object.fromEntries(Object.keys(TEAMS_BY_PERSON).map(person => [person, {
     person, teams: TEAMS_BY_PERSON[person], for: 0, against: 0, cards: 0, played: 0
   }]));
@@ -257,9 +285,18 @@ function calcStats() {
     people[s.person].played += s.played;
   }
 
-  const quickest = state.matches
+  const recordedQuickest = state.matches
     .filter(m => m.quickGoalTeam && m.quickGoalMinute !== null && !Number.isNaN(m.quickGoalMinute))
     .sort((a, b) => a.quickGoalMinute - b.quickGoalMinute || new Date(a.date) - new Date(b.date))[0];
+
+  const quickest = recordedQuickest || {
+    teamA: FINAL_QUICKEST_GOAL.team,
+    teamB: FINAL_QUICKEST_GOAL.opponent,
+    quickGoalTeam: FINAL_QUICKEST_GOAL.team,
+    quickGoalMinute: FINAL_QUICKEST_GOAL.minute,
+    quickGoalDisplay: FINAL_QUICKEST_GOAL.display,
+    date: "2026-06-20T00:00:00Z"
+  };
 
   const gdMatch = state.matches
     .map(m => ({ ...m, goalDiff: Math.abs(m.goalsA - m.goalsB) }))
@@ -295,7 +332,7 @@ function recapPrizeRows(stats) {
     { label: "Most goals conceded", people: concededWinners.map(person => person.person).join(" & "), detail: `${maxAgainst} each · £${(25 / concededWinners.length).toFixed(2)} each`, status: "confirmed" },
     { label: "Biggest winning margin", people: gdOwners.join(" & "), detail: stats.gdMatch ? `${stats.gdMatch.teamA} ${stats.gdMatch.goalsA}–${stats.gdMatch.goalsB} ${stats.gdMatch.teamB} · £${(25 / gdOwners.length).toFixed(2)} each` : "Awaiting result", status: stats.gdMatch ? "confirmed" : "pending" },
     { label: "Most cards", people: stats.people.some(person => person.cards > 0) ? leaderTextForMax(stats.people, "cards") : "Awaiting confirmation", detail: "£25 prize", status: stats.people.some(person => person.cards > 0) ? "confirmed" : "pending" },
-    { label: "Quickest goal", people: stats.quickest ? `${ownerForTeam(stats.quickest.quickGoalTeam)} · ${stats.quickest.quickGoalTeam}` : "Awaiting confirmation", detail: stats.quickest ? `${stats.quickest.quickGoalMinute}' · £25` : "£25 prize", status: stats.quickest ? "confirmed" : "pending" }
+    { label: "Quickest goal", people: stats.quickest ? `${ownerForTeam(stats.quickest.quickGoalTeam)} · ${stats.quickest.quickGoalTeam}` : "Awaiting confirmation", detail: stats.quickest ? `${stats.quickest.quickGoalDisplay || `${stats.quickest.quickGoalMinute}'`} · £25` : "£25 prize", status: stats.quickest ? "confirmed" : "pending" }
   ];
 }
 
@@ -332,7 +369,7 @@ function renderDashboard(stats) {
   document.getElementById("cardsLeader").textContent = leaderTextForMax(stats.people, "cards");
 
   document.getElementById("quickestLeader").textContent = stats.quickest
-    ? `${ownerForTeam(stats.quickest.quickGoalTeam)} — ${stats.quickest.quickGoalTeam} (${stats.quickest.quickGoalMinute}')`
+    ? `${ownerForTeam(stats.quickest.quickGoalTeam)} — ${stats.quickest.quickGoalTeam} (${stats.quickest.quickGoalDisplay || `${stats.quickest.quickGoalMinute}'`})`
     : "TBC";
 
   document.getElementById("gdLeader").textContent = stats.gdMatch
@@ -384,7 +421,7 @@ function renderMatches() {
       <td><strong>${m.goalsA}-${m.goalsB}</strong></td>
       <td>${Math.abs(m.goalsA - m.goalsB)}</td>
       <td>${m.cardsA + m.cardsB}</td>
-      <td>${m.quickGoalTeam ? `${escapeHtml(m.quickGoalTeam)} (${m.quickGoalMinute}')` : "—"}</td>
+      <td>${m.quickGoalTeam ? `${escapeHtml(m.quickGoalTeam)} (${m.quickGoalDisplay || `${m.quickGoalMinute}'`})` : "—"}</td>
       <td>${m.source ? `<span class="source-pill">${escapeHtml(m.source)}</span>` : `<button onclick="deleteMatch('${m.id}')" class="danger">Delete</button>`}</td>
     </tr>
   `).join("");
@@ -394,7 +431,7 @@ function renderMatches() {
       <div class="match-meta"><span>${displayDate(m.date)}</span>${m.source ? `<span class="source-pill">${escapeHtml(m.source)}</span>` : ""}</div>
       <div class="match-score"><span>${escapeHtml(m.teamA)}</span><strong>${m.goalsA}-${m.goalsB}</strong><span>${escapeHtml(m.teamB)}</span></div>
       <div class="match-owners">${escapeHtml(matchOwnerLine(m))}</div>
-      <div class="match-stats"><span>GD ${Math.abs(m.goalsA - m.goalsB)}</span><span>${m.cardsA + m.cardsB} cards</span><span>${m.quickGoalTeam ? `Fastest: ${escapeHtml(m.quickGoalTeam)} ${m.quickGoalMinute}'` : "No quickest goal"}</span></div>
+      <div class="match-stats"><span>GD ${Math.abs(m.goalsA - m.goalsB)}</span><span>${m.cardsA + m.cardsB} cards</span><span>${m.quickGoalTeam ? `Fastest: ${escapeHtml(m.quickGoalTeam)} ${m.quickGoalDisplay || `${m.quickGoalMinute}'`}` : "No quickest goal"}</span></div>
       ${m.source ? "" : `<button onclick="deleteMatch('${m.id}')" class="danger">Delete</button>`}
     </article>
   `).join("");
