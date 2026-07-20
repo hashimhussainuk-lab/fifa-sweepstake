@@ -114,9 +114,9 @@ const TEAM_ALIASES = {
 // Final tournament discipline totals: yellow cards + red cards.
 // Stored as the completed-tournament record for the final recap.
 const FINAL_TEAM_CARDS = {
-  "Argentina": 14, "Egypt": 12, "Canada": 11, "Paraguay": 10,
+  "Argentina": 15, "Egypt": 12, "Canada": 11, "Paraguay": 10,
   "Ecuador": 9, "England": 9, "Bosnia and Herzegovina": 8, "United States": 8,
-  "Brazil": 8, "Colombia": 8, "Belgium": 7, "Switzerland": 7,
+  "Brazil": 8, "Colombia": 8, "Belgium": 7, "Switzerland": 8,
   "Curaçao": 7, "Haiti": 7, "Morocco": 7, "Portugal": 7,
   "South Africa": 7, "Congo DR": 6, "France": 6, "Ghana": 6,
   "Iran": 6, "Saudi Arabia": 6, "Spain": 6, "Uruguay": 6,

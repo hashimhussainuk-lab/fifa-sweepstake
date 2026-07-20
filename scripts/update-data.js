@@ -64,6 +64,23 @@ const TEAM_OWNERS = {
   "France": "Yen"
 };
 
+const TEAM_ALIASES = {
+  "Bosnia-Herzegovina": "Bosnia and Herzegovina",
+  "Czechia": "Czech Republic",
+  "Ivory Coast": "Côte d'Ivoire",
+  "South Korea": "Korea Republic",
+  "Cape Verde": "Cape Verde Islands",
+  "Türkiye": "Turkey"
+};
+
+function canonicalTeam(team) {
+  return TEAM_ALIASES[team] || team;
+}
+
+function scoreValue(node, side) {
+  return Number(node?.[side] ?? node?.[side === "home" ? "homeTeam" : "awayTeam"] ?? 0);
+}
+
 async function main() {
   const url = "https://api.football-data.org/v4/competitions/WC/matches";
 
@@ -82,8 +99,12 @@ async function main() {
   const matches = (apiData.matches || [])
     .filter(match => match.status === "FINISHED")
     .map(match => {
-      const homeTeam = match.homeTeam?.name || "";
-      const awayTeam = match.awayTeam?.name || "";
+      const homeTeam = canonicalTeam(match.homeTeam?.name || "");
+      const awayTeam = canonicalTeam(match.awayTeam?.name || "");
+      const fullTimeHome = scoreValue(match.score?.fullTime, "home");
+      const fullTimeAway = scoreValue(match.score?.fullTime, "away");
+      const penaltyHome = scoreValue(match.score?.penalties, "home");
+      const penaltyAway = scoreValue(match.score?.penalties, "away");
 
       return {
         id: String(match.id),
@@ -92,8 +113,10 @@ async function main() {
         teamB: awayTeam,
         ownerA: TEAM_OWNERS[homeTeam] || "",
         ownerB: TEAM_OWNERS[awayTeam] || "",
-        goalsA: match.score?.fullTime?.home ?? 0,
-        goalsB: match.score?.fullTime?.away ?? 0,
+        // football-data.org includes shootout kicks in fullTime. They are not
+        // match goals and must not affect goals-for or goals-conceded prizes.
+        goalsA: fullTimeHome - penaltyHome,
+        goalsB: fullTimeAway - penaltyAway,
         cardsA: 0,
         cardsB: 0,
         quickGoalTeam: "",
